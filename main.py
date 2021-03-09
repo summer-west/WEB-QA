@@ -13,9 +13,14 @@ from mod import TestAutomation
 class PosType(unittest.TestCase):
     
     url = 'https://about.postype.com/'
+    version = '0.0.1'
+    
+    def printVersion(self):
+        print('version : ' + self.version)
+        
 
     def setUp(self):
-
+        self.printVersion()
         self.driver = webdriver.Remote(
             command_executor='http://127.0.0.1:4723/wd/hub',
             desired_capabilities={
@@ -35,10 +40,6 @@ class PosType(unittest.TestCase):
         test.checkText('//div[@id="navbar-collapse"]/ul/li[2]/a', '채용 정보')
         test.checkText('//div[@id="navbar-collapse"]/ul/li[3]/a', '블로그')
         test.checkText('//div[@id="navbar-collapse"]/ul/li[4]/a', '비즈니스')
-
-        # test.clickBtn('//button[@id="navbar-toggler"]/svg[2]/path', '네비게이션 메뉴 닫기')
-        test.clickBtn('/html/body/nav/div/a/span', 'POSTYPE 로고')
-        # test.checkURL('https://about.postype.com/index')
 
     # def tearDown(self):
         # self.driver.quit()
