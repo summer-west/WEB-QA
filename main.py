@@ -12,7 +12,7 @@ from index import Index
 
 class PosType(unittest.TestCase):
     
-    version = '0.0.1'
+    version = '0.0.2'
     
     def printVersion(self):
         print('version : ' + self.version)
