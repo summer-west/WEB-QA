@@ -8,12 +8,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 import time
-from mod import TestAutomation
+from index import Index
 
 class PosType(unittest.TestCase):
     
-    url = 'https://about.postype.com/'
-    version = '0.0.1'
+    version = '0.0.2'
     
     def printVersion(self):
         print('version : ' + self.version)
@@ -27,20 +26,13 @@ class PosType(unittest.TestCase):
               'platformName': 'Android',
               'browserName': 'Chrome'
             })
+        self.index = Index(self.driver)
 
     def test_search_field(self):
 
-        wait = WebDriverWait(self.driver, 20)
-        self.driver.get(self.url)
-        test = TestAutomation(self.driver)
-
-        test.clickBtn('//button[@id="navbar-toggler"]', '네비게이션 메뉴 보기')
-
-        test.checkText('//div[@id="navbar-collapse"]/ul/li[1]/a', '포스타입 소개')
-        test.checkText('//div[@id="navbar-collapse"]/ul/li[2]/a', '채용 정보')
-        test.checkText('//div[@id="navbar-collapse"]/ul/li[3]/a', '블로그')
-        test.checkText('//div[@id="navbar-collapse"]/ul/li[4]/a', '비즈니스')
-
+        for num in range(1, 19):
+            self.index.runTestCase(num)
+        
     # def tearDown(self):
         # self.driver.quit()
 
