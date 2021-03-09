@@ -3,16 +3,18 @@ import openpyxl
  
 class Exel():
 
-	def __init__(self, num):
-		self.num = num
+	def __init__(self):
 		self.currentPath = os.getcwd()
 
 		self.write_wb = openpyxl.load_workbook(self.currentPath + '/TC.xlsx')
 		self.write_ws = self.write_wb.active
 	
-	def loadSubject(self):
-		print('%d. ' %self.num + self.write_ws.cell(row=1+self.num,column=2).value)
+	def loadSubject(self, num):
+		print('\n%d. ' %num + self.write_ws.cell(row=1+num,column=2).value)
 
-	def writeResult(self, result):
-		self.write_ws.cell(row=1+self.num,column=6).value = result
+	def writeResult(self, num, result):
+		if result == True:
+			self.write_ws.cell(row=1+num,column=6).value = 'Passed'
+		else:
+			self.write_ws.cell(row=1+num,column=6).value = 'Failed'			
 		self.write_wb.save(self.currentPath + '/TC.xlsx')

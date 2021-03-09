@@ -23,8 +23,10 @@ class TestAutomation():
 			self.driver.switch_to.window(self.driver.window_handles[-1])
 			self.wait.until(EC.element_to_be_clickable((By.XPATH, xpath)))
 			print('Passed - ' + ref)
+			return True
 		except TimeoutException:
 			print('Failed - TimeoutException')
+			return False
 
 	def clickBtn(self, xpath, ref):
 		try:
@@ -43,10 +45,12 @@ class TestAutomation():
 	def checkURL(self, ref):
 		self.driver.switch_to.window(self.driver.window_handles[-1])
 		url = self.driver.current_url
-		if url in ref:
-			print('Passed - 접속 URL (' + ref + ')')
+		if url == ref:
+			print('Passed - 접속 URL (' + url + ')')
+			return True
 		else:
-			print('Failed - 접속 URL (' + ref + ')')
+			print('Failed - 접속 URL (' + url + ')')
+			return False
 
 	def checkText(self, xpath, ref):
 		try:
@@ -54,18 +58,24 @@ class TestAutomation():
 			el = self.wait.until(EC.element_to_be_clickable((By.XPATH, xpath)))
 			if el.text == ref:
 				print ('Passed - ' + ref)
+				return True
 			else:
 				print ('Failed - ' + el.text)
+				return False
 		except TimeoutException:
 			print('Failed - TimeoutException')
+			return False
 
 	def checkUI(self, xpath, ref):
 		try:
 			self.driver.switch_to.window(self.driver.window_handles[-1])
 			self.driver.find_element_by_xpath(xpath)
 			print('Passed - ' + ref)
+			return True
 		except WebDriverException:
 			print('Failed - WebDriverException')
+			return False
 		except NoSuchWindowException:
-			print('Failed - NoSuchWindowException')			
+			print('Failed - NoSuchWindowException')	
+			return False		
 
