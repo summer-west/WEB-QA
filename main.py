@@ -13,9 +13,14 @@ from mod import TestAutomation
 class PosType(unittest.TestCase):
     
     url = 'https://about.postype.com/'
+    version = '0.0.1'
+    
+    def printVersion(self):
+        print('version : ' + self.version)
+        
 
     def setUp(self):
-
+        self.printVersion()
         self.driver = webdriver.Remote(
             command_executor='http://127.0.0.1:4723/wd/hub',
             desired_capabilities={
