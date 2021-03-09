@@ -36,10 +36,6 @@ class PosType(unittest.TestCase):
         test.checkText('//div[@id="navbar-collapse"]/ul/li[3]/a', '블로그')
         test.checkText('//div[@id="navbar-collapse"]/ul/li[4]/a', '비즈니스')
 
-        # test.clickBtn('//button[@id="navbar-toggler"]/svg[2]/path', '네비게이션 메뉴 닫기')
-        test.clickBtn('/html/body/nav/div/a/span', 'POSTYPE 로고')
-        # test.checkURL('https://about.postype.com/index')
-
     # def tearDown(self):
         # self.driver.quit()
 
