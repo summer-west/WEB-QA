@@ -78,4 +78,3 @@ class TestAutomation():
 		except NoSuchWindowException:
 			print('Failed - NoSuchWindowException')	
 			return False		
-
