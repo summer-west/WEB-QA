@@ -18,3 +18,4 @@ class Exel():
 		else:
 			self.write_ws.cell(row=1+num,column=6).value = 'Failed'			
 		self.write_wb.save(self.currentPath + '/TC.xlsx')
+
